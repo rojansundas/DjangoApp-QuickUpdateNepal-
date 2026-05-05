@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(135deg, #0d6efd, #0a58ca);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #0d6efd;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #0d6efd;
+            color: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0a58ca;
+            transform: translateY(-2px);
+        }
+
+        .msg {
+            text-align: center;
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .link a {
+            text-decoration: none;
+            color: #0d6efd;
+        }
+        .btn-login {
+    display: inline-block;
+    padding: 8px 20px;
+    background: #0a58ca;
+    color: #fff;
+    text-decoration: none; /* 🔥 removes underline */
+    border-radius: 6px;
+    border: none;
+    font-weight: 500;
+    transition: 0.3s;
+    cursor: pointer;
+    justify-content: center;
+}
+
+/* hover */
+.btn-login:hover {
+    background: #b91c1c;
+    color: #fff;
+    text-decoration: none; /* ensure no underline */
+}
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+
+    <h2>Login</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="msg">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <input type="text" name="username" placeholder="Username" required>
+
+    <input type="password" name="password" placeholder="Password" required>
+
+    <button type="submit">Login</button>
+</form>
+
+    <div class="link">
+        <p>Don't have account? <a href="{% url 'register' %}">Register</a></p>
+        <a href="{% url "index" %}">Back to Home</a>
+    </div>
+
+</div>
+
+</body>
+</html>

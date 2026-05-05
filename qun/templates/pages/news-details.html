@@ -1,0 +1,75 @@
+{% extends 'layouts/app.html' %}
+
+{% block title %}
+  News Details
+{% endblock %}
+
+{% block content %}
+  <link rel="stylesheet" href="css/newsDetails.css" />
+  <div class="container">
+    <div class="row py-3">
+      <div class="col-md-12 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title">{{ news.title }}</h1>
+            <h2>{{ news.user }}</h2>
+            {% if news.image %}
+              <img src="{{ news.image.url }}" class="card-img-top" alt="{{ news.title }} " />
+            {% endif %}
+            <p class="card-text">{{ news.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="container">
+  <div class="row">
+    
+  <h3>Related News</h3>
+
+  <div class="row">
+    <div class="col-md-12">
+      {% for relatednews in relatedNews %}
+        <div class="col-md-4">
+          <div class="card">
+            {% if relatednews.image %}
+              <img src="{{ relatednews.image.url }}" style="height: 200px;" class="card-img-top" alt="{{ relatednews.title }}" />
+            {% endif %}
+            <div class="card-body">
+              <h2 class="card-title">{{ relatednews.title }}</h2>
+              <p class="card-text">{{ relatednews.description|truncatewords:20 }}</p>
+
+              <a href="{% url 'news-details' relatednews.slug %}" class="btn-btn-primary">Read More</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <h3>Leave a Comment</h3>
+
+    {% if user.is_authenticated %}
+      <form method="POST">
+        {% csrf_token %}
+        <textarea name="content" placeholder="Write your comment..." required></textarea>
+        <button type="submit">Post Comment</button>
+      </form>
+    {% else %}
+      <p>
+        Please <a href="{% url 'login' %}">login</a> to comment.
+      </p>
+    {% endif %}
+    <h3>Comments</h3>
+
+    {% for comment in comments %}
+      <div class="comment-box">
+        <strong>{{ comment.user.username }}</strong>
+        <p>{{ comment.content }}</p>
+        <small>{{ comment.created_at }}</small>
+      </div>
+    {% empty %}
+      <p>No comments yet.</p>
+    {% endfor %}
+  </div>
+  </div>
+</div>
+{% endblock %}

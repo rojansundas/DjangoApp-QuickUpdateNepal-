@@ -1,0 +1,66 @@
+
+
+{% extends "layouts/app.html" %}
+{% load static %} 
+
+{% block title %}
+ Home
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/card.css' %}" />
+
+<div class="container">
+    <div class="row py-3">
+        
+        {% for news in newsData %}
+        
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                
+                {% if news.image %}
+                <img src="{{ news.image.url }}" 
+                     class="card-img-top" 
+                     alt="{{ news.title }}" 
+                     style="height: 300px; object-fit: cover;" />
+                {% endif %}
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{ news.title }}</h5>
+                    <p class="card-text">
+                        {{ news.description | truncatewords:25 }}
+                    </p>
+                    <a href="{% url "news-details" news.slug %}" class="btn btn-primary">Read More</a>
+                </div>
+
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+    <div class="row">
+    <div class="pagination">
+    <span class="step-links">
+        {% if newsData.has_previous %}
+            <a href="?page=1" class="btn btn-primary" >&laquo; first</a>
+            <a href="?page={{ newsData.previous_page_number }}" class="btn btn-primary" >previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ newsData.number }} of {{ newsData.paginator.num_pages }}.
+        </span>
+
+        {% if newsData.has_next %}
+            <a href="?page={{ newsData.next_page_number }}" class="btn btn-primary">next</a>
+            <a href="?page={{ newsData.paginator.num_pages }}"class="btn btn-primary">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+</div>
+
+
+
+
+
+{% endblock %}

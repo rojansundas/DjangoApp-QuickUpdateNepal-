@@ -1,0 +1,40 @@
+{% extends "layouts/app.html" %}
+
+{% block title %}
+    {{category.name}}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row py-3">
+        <h1>{{category.name}}</h1>
+        
+        {% for news in category.news_set.all %}
+        
+        <div class="col-md-4 mb-3">
+            <div class="card">
+                
+                {% if news.image %}
+                <img src="{{ news.image.url }}" 
+                     class="card-img-top" 
+                     alt="{{ news.title }}" 
+                     style="height: 300px; object-fit: cover;" />
+                {% endif %}
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{ news.title }}</h5>
+                    <p class="card-text">
+                        {{ news.description | truncatewords:25 }}
+                    </p>
+                    <a href="{% url "news-details" news.slug %}" class="btn btn-primary">Read More</a>
+                </div>
+
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

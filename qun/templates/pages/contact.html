@@ -1,0 +1,92 @@
+{% extends 'layouts/app.html' %}
+{% load static %}
+
+{% block title %}
+  contact
+{% endblock %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}" />
+{% block content %}
+
+  <div class="container">
+    <div class="row py-3">
+      <div class="col">
+        {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+        <form action="" method="post" class="p-4 shadow rounded bg-white">
+          {% csrf_token %}
+
+          <h3 class="mb-4 text-center">Contact Us</h3>
+
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" name="fullname" class="form-control" placeholder="Enter your full name" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input type="text" name="phone" class="form-control" placeholder="Enter your phone number" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Email Address</label>
+            <input type="email" name="email" class="form-control" placeholder="Enter your email" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Subject</label>
+            <input type="text" name="subject" class="form-control" placeholder="Enter subject" />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Message</label>
+            <textarea name="message" class="form-control" rows="4" placeholder="Write your message..." required></textarea>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+          <div class="col-md-6">
+            <div class="p-4 shadow rounded h-100 bg-white">
+
+                <!-- Location Title -->
+                <h4 class="mb-3 text-center">Our Location</h4>
+                <p class="text-center text-muted mb-3">
+                    IT Training Nepal, Kathmandu
+                </p>
+                <div style="height: 350px;">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.3324508097094!2d85.31965397507544!3d27.70701992550648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1907be4b5251%3A0x31f852fae10e4ea6!2sIT%20Training%20Nepal!5e0!3m2!1sen!2snp!4v1777873084751!5m2!1sen!2snp"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; border-radius:10px;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<a href="https://wa.me/9779819075360?text=Hello%20I%20need%20help" 
+   class="whatsapp-btn"
+   target="_blank">
+   💬 Chat on WhatsApp
+</a>
+  </div>
+
+  
+{% endblock %}

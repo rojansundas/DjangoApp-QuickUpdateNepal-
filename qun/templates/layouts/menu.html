@@ -1,0 +1,77 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/nav.css' %}" />
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}">
+      <img src="{% static 'images/logo.png' %}" alt="Logo" class="nav-logo" width="50px"/>
+      <span class="brand-text">Quick Update Nepal</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'latestnews' %}">News</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{% url 'category' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Category</a>
+
+          <ul class="dropdown-menu">
+            {% for category in categoryData %}
+              <li>
+                <a class="dropdown-item" href="{% url 'category-details' category.slug %}">{{ category.name }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url "contact" %}">Contact Us</a>
+        </li>
+      </ul> 
+      <form class="d-flex" method='get'  role="search" action="{% url 'search' %}">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="criteria" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <div class="d-flex align-items-center gap-2">
+
+    {% if user.is_authenticated %}
+
+        <div class="dropdown">
+            <a class="btn btn-primary dropdown-toggle d-flex align-items-center gap-2"
+               href="#"
+               role="button"
+               data-bs-toggle="dropdown"
+               aria-expanded="false">
+
+                <span class="avatar-sm">
+                    {{ user.username|slice:":1"|upper }}
+                </span>
+
+                {{ user.username }}
+            </a>
+
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a class="dropdown-item" href="{% url 'profile' %}">
+                        👤 Profile
+                    </a>
+                </li>
+               
+        </div>
+
+    {% else %}
+
+        
+        <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+        
+
+    {% endif %}
+
+</div>
+    </div>
+  </div>
+</nav>

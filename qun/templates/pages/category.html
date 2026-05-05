@@ -1,0 +1,38 @@
+{% extends "layouts/app.html" %}
+
+{% block title %}
+Category list
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <h1 class="py-3">Category list</h1>
+
+    <div class="row">
+
+        {% for category in categoryData %}
+
+        <div class="col-md-4 mb-3">
+            <div class="card">
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ news.title }}</h5>
+
+                    <a href="{% url 'news-details' news.slug %}" class="btn btn-primary">
+                        Read More
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        {% empty %}
+        <p>No news found in this category.</p>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}

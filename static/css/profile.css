@@ -1,0 +1,118 @@
+/* ===== BODY ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== CONTAINER ===== */
+.profile-container {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* ===== CARD ===== */
+.profile-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+/* ===== HEADER ===== */
+.profile-header {
+    margin-bottom: 20px;
+}
+
+/* Avatar */
+.avatar {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 10px;
+    background: #dc2626;
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Username */
+.profile-header h2 {
+    margin: 5px 0;
+    font-size: 22px;
+    color: #111827;
+}
+
+/* Email */
+.email {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* ===== BODY ===== */
+.profile-body {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.info {
+    margin-bottom: 12px;
+}
+
+.info span {
+    font-weight: 600;
+    color: #374151;
+    font-size: 13px;
+}
+
+.info p {
+    margin: 3px 0 0;
+    color: #111827;
+}
+
+/* ===== BUTTON ===== */
+.profile-actions {
+    margin-top: 20px;
+}
+
+.btn-logout {
+    display: inline-block;
+    padding: 8px 20px;
+    background: #dc2626;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.btn-logout:hover {
+    background: #b91c1c;
+}
+/* Profile Button */
+.btn-profile {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 6px 14px;
+    border-radius: 20px;
+
+    background: #f3f4f6;
+    color: #111827;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+

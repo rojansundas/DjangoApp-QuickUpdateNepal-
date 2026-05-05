@@ -1,0 +1,175 @@
+
+.navbar {
+    background: linear-gradient(135deg, #0d6efd, #0a58ca);
+    padding: 12px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.navbar-brand {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff !important;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+}
+
+.navbar-brand:hover {
+    color: #dbeafe ;
+    transform: scale(1.05);
+}
+
+
+.navbar-nav .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    margin: 0 8px;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.navbar-nav .nav-link:not(.dropdown-toggle)::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    transition: 0.3s;
+}
+
+.navbar-nav .nav-link:not(.dropdown-toggle):hover::after {
+    width: 100%;
+}
+
+
+.dropdown-menu {
+    border-radius: 10px;
+    border: none;
+    padding: 8px 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+
+.dropdown-item {
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.dropdown-item:hover {
+    background: #0d6efd;
+    color: #fff;
+    padding-left: 25px;
+}
+
+form input.form-control {
+    border-radius: 20px;
+    border: none;
+    padding: 6px 15px;
+    outline: none;
+}
+
+form input.form-control:focus {
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+
+
+form .btn {
+    border-radius: 20px;
+    padding: 6px 15px;
+    border: none;
+    background: #fff;
+    color: #0d6efd;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+form .btn:hover {
+    background: #e0f2fe;
+    color: #0a58ca;
+}
+
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.brand-text {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #111827;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.brand-text::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 40%;
+    height: 3px;
+   
+    transition: 0.3s ease;
+}
+
+
+
+.navbar-brand:hover .brand-text::after {
+    width: 100%;
+}
+.nav-logo {
+    height: 42px;
+    width: 42px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+    background: blue;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #0d6efd, #0a58ca);
+    border: none;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #0a58ca, #084298);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(13, 110, 253, 0.4);
+    color: #fff;
+}
+
+.btn-primary:active {
+    transform: scale(0.97);
+}
