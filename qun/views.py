@@ -9,6 +9,20 @@ from django.contrib.auth import authenticate, login as auth_login,logout
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from .models import Comment
+from rest_framework import viewsets
+from .serializer import NewsSerializer
+from rest_framework.permissions import IsAuthenticated
+
+
+class NewsViewSet(viewsets.ModelViewSet):
+    permission_classes=[IsAuthenticated]
+    queryset=News.objects.all()
+    serializer_class=NewsSerializer
+
+
+
+
+
 
 def index(request):
     news_list=News.objects.all()
@@ -27,7 +41,7 @@ def newsDetails(request, slug):
 
     comments = news.comments.all().order_by('-created_at')
 
-    # ✅ Add comment logic (no change to existing structure)
+   
     if request.method == "POST":
         if request.user.is_authenticated:
             content = request.POST.get('content')
@@ -43,7 +57,7 @@ def newsDetails(request, slug):
     data = {
         'news': News.objects.get(slug=slug),
         'relatedNews': News.objects.filter(category_id=catId).exclude(id=news.id)[:10],
-        'comments': comments,  # ✅ added
+        'comments': comments, 
     }
 
     return render(request, 'pages/news-details.html', data)
@@ -113,7 +127,6 @@ def contact(request):
         {message}
         """
 
-        # Send email
         send_mail(
             subject,
             full_message,
@@ -151,7 +164,7 @@ def register(request):
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
 
-        # ❗ Validation
+   
         if password != confirm_password:
             messages.error(request, "Passwords do not match!")
             return redirect('register')

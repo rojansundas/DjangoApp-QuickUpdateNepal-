@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'qun.apps.QunConfig',
     'bootstrap5',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

@@ -119,7 +119,7 @@ form .btn:hover {
     font-weight: 800;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    color: #111827;
+    color: white;
     position: relative;
     transition: all 0.3s ease;
 }
