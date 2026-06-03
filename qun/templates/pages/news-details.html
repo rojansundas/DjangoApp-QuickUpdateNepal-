@@ -12,9 +12,11 @@
         <div class="card">
           <div class="card-body">
             <h1 class="card-title">{{ news.title }}</h1>
-            <h2>{{ news.user }}</h2>
+            <p>Reported by - {{ news.user }}</p>
+            <p>Post on - {{news.published_at}}</p>
+            
             {% if news.image %}
-              <img src="{{ news.image.url }}" class="card-img-top" alt="{{ news.title }} " />
+              <img src="{{ news.image.url }}" class="card-img-top" alt="{{ news.title }} width="100px" />
             {% endif %}
             <p class="card-text">{{ news.description }}</p>
           </div>

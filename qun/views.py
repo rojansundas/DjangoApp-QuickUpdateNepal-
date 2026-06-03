@@ -26,7 +26,7 @@ class NewsViewSet(viewsets.ModelViewSet):
 
 def index(request):
     news_list=News.objects.all()
-    paginator = Paginator(news_list,4)
+    paginator = Paginator(news_list,6)
     page_number=request.GET.get("page")
     page_obj=paginator.get_page(page_number)
 
@@ -65,7 +65,7 @@ def newsDetails(request, slug):
 def LatestNews(request):
     data={
         'latestNewsData':News.objects.all().order_by('-published_at')[:6]
-    }
+    }          
     return render(request,'pages/latestnews.html',data)
 
 def category_list(request):
